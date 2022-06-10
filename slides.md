@@ -79,18 +79,18 @@ h1 {
 
 # 列表展示
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
+使用 <kbd>| --- | --- |</kbd> 来创建列表， <span style="color: grree">[了解更多](https://sli.dev/guide/navigation.html)</span>
 
 ### 快捷键
 
 |     |     |
 | --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
+| <kbd>right</kbd> / <kbd>space</kbd>| 下一步 |
+| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | 上一步 |
+| <kbd>up</kbd> | 上一页 |
+| <kbd>down</kbd> | 下一页 |
 
-<!-- https://sli.dev/guide/animations.html#click-animations -->
+
 <img
   v-click
   class="absolute -bottom-9 -left-7 w-80 opacity-50"
@@ -98,14 +98,15 @@ Hover on the bottom-left corner to see the navigation's controls panel, [learn m
 />
 <p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">左下角!</p>
 
+
 ---
-layout: image-left
+layout: image-right
 image: https://source.unsplash.com/collection/94734566/1920x1080
 ---
 
-# Code
+# 代码展示
 
-Use code snippets and get the highlighting directly![^1]
+高亮展示
 
 ```ts {all|2|1-6|9|all}
 interface User {
@@ -124,7 +125,7 @@ function updateUser(id: number, update: User) {
 
 <arrow v-click="3" x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" />
 
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
+[^1]: [了解更多用法](https://sli.dev/guide/syntax.html#line-highlighting)
 
 <style>
 .footnotes-sep {
@@ -140,25 +141,52 @@ function updateUser(id: number, update: User) {
 
 ---
 
-# Components
+# 代码编辑
+>在PPT里写代码
 
-<div grid="~ cols-2 gap-4">
+```ts {monaco}
+interface User {
+  id: number
+  firstName: string
+  lastName: string
+  role: string
+}
+
+function updateUser(id: number, update: User) {
+  const user = getUser(id)
+  const newUser = {...user, ...update}  
+  saveUser(id, newUser)
+}
+```
+
+---
+
+# 组件
+
+Slidev提供了一些集成的组件，如果想要自定义新组件，可以在components文件夹下面新增。
+
+<div grid="~ cols-2 gap-6">
 <div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
 
 ```html
 <Counter :count="10" />
 ```
 
-<!-- ./components/Counter.vue -->
+
 <Counter :count="10" m="t-4" />
 
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
+<div class="relative top-10">
+
+```html
+<Link to="1">跳转第一页</Link>
+```
+
+<Link to="1" >跳转第一页</Link>
 
 </div>
+
+</div>
+
 <div>
 
 ```html
@@ -168,16 +196,17 @@ Check out [the guides](https://sli.dev/builtin/components.html) for more.
 <Tweet id="1390115482657726468" scale="0.65" />
 
 </div>
+
+
 </div>
 
 
 ---
-class: px-20
+class: px-10
 ---
 
-# Themes
+# 主题选择
 
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
 
 <div grid="~ cols-2 gap-2" m="-t-2">
 
@@ -199,16 +228,38 @@ theme: seriph
 
 </div>
 
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
+[主题库](https://sli.dev/themes/gallery.html).
+
+---
+---
+
+# 点击动画
+
+- v-click指令 或 <kbd>v-click</kbd>标签： 为元素添加点击动画
+- v-after: 在上一个v-click触发后使所在元素可见
+- v-click-hide: 点击后所在元素消失
+<br>
+<br>
+```js
+<div v-click>Hello</div>
+<div v-after class="relative top-10">World</div>
+<div v-click-hide class="relative top-20">点下一步后消失</div>
+```
+
+<div class="relative top-10">
+<div v-click class="top-10">Hello</div>
+<div v-after class="relative top-10">World</div>
+<div v-click-hide class="relative top-20">点击后消失</div>
+</div>
+
+
 
 ---
 preload: false
 ---
 
-# Animations
+# 动画 
 
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
 
 ```html
 <div
@@ -278,39 +329,12 @@ const final = {
 
 </div>
 
----
-
-# LaTeX
-
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
-
-<br>
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
 
 ---
 
-# Diagrams
+# 图表
 
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
+用markdown画图表📈
 
 <div class="grid grid-cols-2 gap-10 pt-4 -mb-6">
 
