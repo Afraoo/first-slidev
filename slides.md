@@ -239,7 +239,6 @@ theme: seriph
 - v-after: 在上一个v-click触发后使所在元素可见
 - v-click-hide: 点击后所在元素消失
 <br>
-<br>
 ```js
 <div v-click>Hello</div>
 <div v-after class="relative top-10">World</div>
@@ -253,6 +252,55 @@ theme: seriph
 </div>
 
 
+
+---
+<!-- clicks: 3
+--- -->
+
+# 群组动画
+```ts
+<v-clicks>
+
+- Item 1
+- Item 2
+- Item 3
+- Item 4
+
+</v-clicks>
+```
+
+<v-clicks>
+
+<div> Item 1</div>
+<div> Item 2</div>
+<div> Item 3</div>
+<div> Item 4</div>
+
+</v-clicks>
+
+
+
+---
+
+# 点击动画的过渡样式
+
+点击出现和隐藏时，元素上都会被加上默认的类名来应用对应的过度
+
+<br>
+<br>
+
+```ts
+// the default
+
+.slidev-vclick-target {
+  transition: opacity 100ms ease;
+}
+
+.slidev-vclick-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+```
 
 ---
 preload: false
@@ -338,17 +386,18 @@ const final = {
 
 <div class="grid grid-cols-2 gap-10 pt-4 -mb-6">
 
-```mermaid {scale: 0.9}
+```mermaid {scale: 0.5}
 sequenceDiagram
     Alice->John: Hello John, how are you?
     Note over Alice,John: A typical interaction
 ```
 
-```mermaid {theme: 'neutral', scale: 0.8}
+```mermaid {theme: 'neutral', scale: 0.5}
 graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
+B[开始] --> C[创建]
+C[创建] --> D{导出}
+D -->|pdf| E[pdf文件]
+D -->|png| F[n张PNG图片]
 ```
 
 </div>
@@ -357,10 +406,45 @@ C -->|Two| E[Result 2]
 
 
 ---
+layout: two-cols
+---
+
+# 导出为PDF
+>使用此功能前需要安装 playwright-chromium
+
+<br>
+<br>
+
+```ts
+npm i -D playwright-chromium
+slidev export
+slidev export --dark // 导出暗色主题文件
+```
+运行以上命令后，在`./slide-export.pdf`中可以看到导出的PDF文件
+
+::right::
+# 导出为图片
+>使用此功能前需要安装 playwright-chromium，将每页PPT导出为一张PNG图片
+
+<br>
+<br>
+
+```ts
+slidev export --format png
+```
+<style>
+.col-left{
+  margin-right: 20px;
+}
+</style>
+
+---
 layout: center
 class: text-center
 ---
 
-# Learn More
+# StackBlitz
+与VSCode近似的在线IDE
 
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+
+[🔗](https://stackblitz.com/)
