@@ -23,11 +23,11 @@ drawings:
 
 # This is  Slidev
 
-Presentation slides for developers
+让PP制作和写代码一样丝滑
 
 <div class="pt-12">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    next page <carbon:arrow-right class="inline"/>
+    开始 <carbon:arrow-right class="inline"/>
   </span>
 </div>
 
@@ -41,53 +41,47 @@ Presentation slides for developers
   </a>
 </div>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
 
 ---
 
-# What is Slidev?
+# 开始第一张
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
+你可以通过将分隔符转换为 扉页块 (front matter)，为每张幻灯片指定布局 (layout) 和其他数据。每页信息都以分隔符 开始，以另一个分隔符 结束。两个分隔符之间的文本是 YAML 格式的数据对象。
+```
+--- // 分隔符
+layout: center
+background: 'https://source.unsplash.com/collection/94734566/1920x1080'
 
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - theme can be shared and used with npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export into PDF, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - anything possible on a webpage
+#这是一级标题
+--- //分隔符
+```
 
 <br>
 <br>
 
-Read more about [Why Slidev?](https://sli.dev/guide/why)
+<span style="color: pink">了解更多 [Why Slidev?](https://sli.dev/guide/why)</span>
 
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
 
 <style>
 h1 {
   background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-image: linear-gradient(45deg, #4EC5D4 80%, #146b8c 20%);
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent; 
   -moz-text-fill-color: transparent;
+  /* color: #ff8640 !important; */
 }
 </style>
 
 ---
 
-# Navigation
+# 列表展示
 
 Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
 
-### Keyboard Shortcuts
+### 快捷键
 
 |     |     |
 | --- | --- |
@@ -102,10 +96,10 @@ Hover on the bottom-left corner to see the navigation's controls panel, [learn m
   class="absolute -bottom-9 -left-7 w-80 opacity-50"
   src="https://sli.dev/assets/arrow-bottom-left.svg"
 />
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">左下角!</p>
 
 ---
-layout: image-right
+layout: image-
 image: https://source.unsplash.com/collection/94734566/1920x1080
 ---
 
